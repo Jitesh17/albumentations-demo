@@ -90,6 +90,14 @@ def select_checkbox(param_name, defaults, n_for_hash, **kwargs):
     return result
 
 
+def select_multiselect(param_name, options_list, defaults, n_for_hash, **kwargs):
+    st.sidebar.subheader(param_name)
+    result = st.sidebar.multiselect(
+        "", options_list, defaults, key=hash(param_name + str(n_for_hash))
+    )
+    return result
+
+
 # dict from param name to function showing this param
 param2func = {
     "num_interval": select_num_interval,
@@ -98,4 +106,5 @@ param2func = {
     "rgb": select_RGB,
     "checkbox": select_checkbox,
     "min_max": select_min_max,
+    "multi_select": select_multiselect,
 }

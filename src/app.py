@@ -26,7 +26,7 @@ def main():
     else:
         # select interface type
         interface_type = st.sidebar.radio(
-            "Select the interface mode", ["Simple", "Professional"]
+            "Select the interface mode", ["Simple", "Professional", "Ultimate"], 2
         )
 
         # select image

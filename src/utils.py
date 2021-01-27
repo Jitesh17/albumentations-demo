@@ -143,12 +143,29 @@ def select_transformations(augmentations: dict, interface_type: str) -> list:
                 )
             )
         transform_names = transform_names[:-1]
+    # in the Ultimate mode you can do anything
+    elif interface_type == "Ultimate":
+        transform_names = [
+            st.sidebar.selectbox(
+                "Select transformation N1:", sorted(list(augmentations.keys()))
+            )
+        ]
+        aug_N = {"N1": transform_names[0]}
+        while transform_names[-1] != "None":
+            transform_names.append(
+                st.sidebar.selectbox(
+                    f"Select transformation N{len(transform_names) + 1}:",
+                    ["None"] + sorted(list(augmentations.keys())),
+                )
+            )
+            aug_N[f"N{len(transform_names) + 1}"] = transform_names[-1]
+        transform_names = transform_names[:-1]
     return transform_names
 
 
 def show_random_params(data: dict, interface_type: str = "Professional"):
     """Shows random params used for transformation (from A.ReplayCompose)"""
-    if interface_type == "Professional":
+    if interface_type in ["Professional", "Ultimate"]:
         st.subheader("Random params used")
         random_values = {}
         for applied_params in data["replay"]["transforms"]:

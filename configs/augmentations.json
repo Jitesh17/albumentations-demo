@@ -1215,5 +1215,16 @@
   "ToGray": [],
   "ToSepia": [],
   "Transpose": [],
-  "VerticalFlip": []
+  "VerticalFlip": [],
+  "OneOf": [
+    {
+      "defaults": [],
+      "options_list": [
+        1,
+        2
+      ],
+      "param_name": "select augmentations",
+      "type": "multi_select"
+    }
+  ]
 }

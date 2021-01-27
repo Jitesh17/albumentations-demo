@@ -27,7 +27,7 @@ def select_image(path_to_images: str, interface_type: str = "Simple"):
     if len(image_names_list) < 1:
         return 1, 0
     else:
-        if interface_type == "Professional":
+        if interface_type in ["Professional", "Ultimate"]:
             image_name = st.sidebar.selectbox(
                 "Select an image:", image_names_list + ["Upload my image"]
             )
